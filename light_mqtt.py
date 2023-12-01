@@ -18,9 +18,12 @@ from typing import Optional
 import json
 import my_light
 
-MQTT_USERNAME = os.environ["MQTT_USERNAME"]
-MQTT_PASSWORD = os.environ["MQTT_PASSWORD"]
-MQTT_HOST = "127.0.0.1"
+SCRIPT_DIR = os.path.split(os.path.realpath(__file__))[0]
+with open(os.path.join(SCRIPT_DIR,"config.json")) as f:
+    conf = json.load(f)
+MQTT_USERNAME = conf["USERNAME"]
+MQTT_PASSWORD = conf["PASSWORD"]
+MQTT_HOST = conf["HOST"]
 
 class SimpleLight(Light):
     name = "Bed Light2"

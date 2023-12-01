@@ -31,9 +31,15 @@ pip3 install -r requirements.txt
 
 ## MQTT
 
+```bash
+vi ./config.json
 ```
-export MQTT_USERNAME="Wenyuan"
-export MQTT_PASSWORD="*"
 
+```json
+{
+	"USERNAME":"",
+	"PASSWORD":"",
+	"HOST": ""
+}
 ```
 

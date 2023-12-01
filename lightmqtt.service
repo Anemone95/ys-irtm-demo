@@ -1,0 +1,15 @@
+[Unit]
+Description=light mqtt Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5s
+ExecStart=/bin/sh -c 'python3 /usr/local/bin/light_mqtt >> /var/log/lightmqtt.log 2>&1'
+ExecReload=/bin/sh -c 'python3 /usr/local/bin/light_mqtt >> /var/log/lightmqtt.log 2>&1'
+ExecStop=kill $(pgrep -f light_mqtt)
+LimitNOFILE=1048576
+
+[Install]
+WantedBy=multi-user.target

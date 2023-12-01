@@ -29,3 +29,11 @@ pip3 install -r requirements.txt
 ./light.py dd # darkest
 ```
 
+## MQTT
+
+```
+export MQTT_USERNAME="Wenyuan"
+export MQTT_PASSWORD="*"
+
+```
+

@@ -1,1 +1,2 @@
 pyserial>=3.5
+hass-mqtt-things==0.5.9

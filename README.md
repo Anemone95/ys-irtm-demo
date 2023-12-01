@@ -12,8 +12,9 @@ Using `sudo armbian-config` to switch on ttyS3 (System->Hardware->rk3588-uart3-m
 
 Install the pyserial
 
-```
+```bash
 pip3 install -r requirements.txt
+bash ./install.sh # add service
 ```
 
 
@@ -41,5 +42,9 @@ vi ./config.json
 	"PASSWORD":"",
 	"HOST": ""
 }
+```
+
+```
+python3 light_mqtt.py
 ```
 

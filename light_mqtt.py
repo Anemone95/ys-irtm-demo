@@ -24,6 +24,7 @@ with open(os.path.join(SCRIPT_DIR,"config.json")) as f:
 MQTT_USERNAME = conf["USERNAME"]
 MQTT_PASSWORD = conf["PASSWORD"]
 MQTT_HOST = conf["HOST"]
+MQTT_MAC = "c0:74:2b:ff:23:04"
 
 class SimpleLight(Light):
     name = "Bed Light2"

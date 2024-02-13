@@ -24,7 +24,7 @@ with open(os.path.join(SCRIPT_DIR,"config.json")) as f:
 MQTT_USERNAME = conf["USERNAME"]
 MQTT_PASSWORD = conf["PASSWORD"]
 MQTT_HOST = conf["HOST"]
-MQTT_MAC = "c0:74:2b:ff:23:04"
+MQTT_UNIQUE_ID = "c0:74:2b:ff:23:04"
 
 class SimpleLight(Light):
     name = "Bed Light2"
@@ -113,7 +113,7 @@ class SimpleLight(Light):
 
 if __name__ == "__main__":
     light = SimpleLight()
-    manager = MqttManager(MQTT_HOST, username=MQTT_USERNAME, password=MQTT_PASSWORD)
+    manager = MqttManager(MQTT_HOST, username=MQTT_USERNAME, password=MQTT_PASSWORD, unique_identifier=MQTT_UNIQUE_ID)
     manager.add_thing(light)
     manager.start()
     sleep(0.3)

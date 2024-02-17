@@ -2,7 +2,6 @@
 import serial
 import time
 import sys
-import time
 help = """
 s Switch
 l Listen

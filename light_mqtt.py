@@ -12,11 +12,13 @@ and offers bidirectional control:
 
 from ham import MqttManager
 from ham.light import Light 
+from ham.sensor import Sensor
 from time import sleep
 import os
 from typing import Optional
 import json
 import my_light
+import fetchco2
 
 SCRIPT_DIR = os.path.split(os.path.realpath(__file__))[0]
 with open(os.path.join(SCRIPT_DIR,"config.json")) as f:
@@ -111,10 +113,22 @@ class SimpleLight(Light):
         self.state = False
         self.color_temp=500
 
+class Co2Sensor(Sensor):
+    name = "CO2 Sensor"
+    short_id = "co2sensor"
+    unit_of_measurement="PPM"
+
+
 if __name__ == "__main__":
     light = SimpleLight()
+    sensor = Co2Sensor()
     manager = MqttManager(MQTT_HOST, username=MQTT_USERNAME, password=MQTT_PASSWORD, unique_identifier=MQTT_UNIQUE_ID)
     manager.add_thing(light)
+    manager.add_thing(sensor)
     manager.start()
     sleep(0.3)
     light.init()
+    print("Entering an infinite loop, Ctrl+C multiple times to exit.")
+    while True:
+        sensor.state = fetchco2.getCo2()
+        sleep(20)
